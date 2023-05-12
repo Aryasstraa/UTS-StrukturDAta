@@ -3,25 +3,25 @@ import queue
 os.system('cls')
 
 class myQueque:
-    def __init__(self):
+    def __init__(self): 
         self.item = queue.Queue()
 
-    def qAdd(self, item):
+    def qAdd(self, item): #untuk menambahkan item ke dalam antrian.
         self.item.put(item)
 
-    def isEmpty(self):
+    def isEmpty(self): # untuk memeriksa apakah antrian kosong atau tidak.
         return self.item.empty()
 
-    def qOut(self):
+    def qOut(self): #untuk mengeluarkan item dari antrian.
         if not self.item.empty():
             return self.item.get()
         else:
             return " Antrian Pasien Kosong"
         
-    def size(self):
+    def size(self): # untuk menghitung jumlah item dalam antrian.
         return self.item.qsize()
     
-    def mainmenu(self):
+    def mainmenu(self): #untuk menampilkan menu utama dan meminta input dari pengguna.
         pilih = "y"
         while (pilih == "y"):
             os.system('cls')
@@ -68,3 +68,9 @@ class myQueque:
 if __name__ == "__main__":
     q = myQueque()
     q.mainmenu()
+
+# Penjelasan :
+# Program ini memiliki beberapa fungsi, seperti menambahkan pasien ke dalam antrian, 
+# menghapus pasien dari antrian, memeriksa apakah antrian kosong,dan menghitung jumlah pasien dalam antrian. 
+# Program ini juga memiliki menu utama yang memungkinkan pengguna memilih opsi yang ingin dilakukan. 
+# Program akan berjalan terus-menerus sampai pengguna memilih untuk keluar.
