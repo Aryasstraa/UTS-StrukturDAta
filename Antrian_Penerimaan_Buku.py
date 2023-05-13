@@ -1,0 +1,76 @@
+import os
+import queue
+os.system('cls')
+
+class myQueque:
+    def __init__(self): 
+        self.item = queue.Queue()
+
+    def qAdd(self, nis,nama): #untuk menambahkan item ke dalam antrian.
+        self.item.put((nis,nama)) # fungsi (nama,nis) didalam qAdd untuk menggabungkan 2 input menjadi 1 input pada saat menegcek antrian  
+
+    def isEmpty(self): # untuk memeriksa apakah antrian kosong atau tidak.
+        return self.item.empty()
+
+        
+    def size(self): # untuk menghitung jumlah item dalam antrian.
+        return self.item.qsize()
+    
+    def qOut(self):
+        return self.item.get()
+    
+    def mainmenu(self): #untuk menampilkan menu utama dan meminta input dari pengguna.
+        pilih = "y"
+        while (pilih == "y"):
+            os.system('cls')
+            print("==========================")
+            print("*     KELOMPOK 6 UTS     *")
+            print("*     PROGRAM ANTRIAN PENERIMAAN BUKU DI SEKOLAH     *")
+            print("==========================")
+            print("1. Siswa Masuk Antrian ")
+            print("2. Siswa Keluar Antrian")
+            print("3. Banyaknya Antrian")
+            print("4. Cek Antrian (True/False) ")
+            print("5. Keluar Program")
+            pilihan = str(input("Silahkan masukan pilihan anda: "))
+            print("NOTE :Klik Enter Jika Ingin Melanjutkan/Out Program")
+            print ("==========================")
+            if (pilihan == "1"):
+                nama = str(input("Masukan Nama Siswa : "))
+                nis= str(input("Masukan NIS Siswa : "))
+                self.qAdd(nis,nama)
+                print(f"NIS {nis} Atas Nama {nama} Telah Masuk Antrian")
+                i = input ("")
+
+            elif(pilihan == "2"):
+                if not self.item.empty():
+                    keluar = self.item.get()
+                    print(f"Dengan NIS dan Nama {keluar} telah keluar dari antrian")
+                else:
+                    print("Antrian Kosong")
+                i = input ("")
+
+            elif(pilihan == "3"):
+                print(f"Terdapat {str(self.size())} Siswa Sedang Menunggu Antrian  ")
+                i = input("")
+
+            elif(pilihan == "4"):
+                print(self.isEmpty()) 
+                i = input ("")
+            
+            elif(pilihan == "5"):
+                print("ARIGATO KARENA SUDAH MENGGUNAKAN PROGRAM ANTRIAN PENERIMAAN BUKU DI SEKOLAH INI")
+                print("SEMOGA HARIMU SENIN TERUS😜")
+                print(quit())
+            else:
+                pilih = "n"
+
+if __name__ == "__main__":
+    q = myQueque()
+    q.mainmenu()
+
+# Penjelasan :
+# Program ini memiliki beberapa fungsi, seperti siswa masuk ke dalam antrian dengan menggunakan Nama dan NIS, 
+# Siswa dapat keluar dari antrian,menghitung jumlah siswa yang sedang menunggu antrian dan memeriksa apakah antrian kosong atau ada. 
+# Program ini juga memiliki menu utama yang memungkinkan pengguna memilih opsi yang ingin dilakukan. 
+# Program akan berjalan terus-menerus sampai pengguna memilih untuk keluar.
