@@ -6,8 +6,8 @@ class myQueque:
     def __init__(self): 
         self.item = queue.Queue()
 
-    def qAdd(self, nis,nama): #untuk menambahkan item ke dalam antrian.
-        self.item.put((nis,nama)) # fungsi (nama,nis) didalam qAdd untuk menggabungkan 2 input menjadi 1 input pada saat menegcek antrian  
+    def qAdd(self,item): #untuk menambahkan item ke dalam antrian.
+        self.item.put(item) # fungsi (nama,nis) didalam qAdd untuk menggabungkan 2 input menjadi 1 input pada saat menegcek antrian  
 
     def isEmpty(self): # untuk memeriksa apakah antrian kosong atau tidak.
         return self.item.empty()
@@ -17,7 +17,10 @@ class myQueque:
         return self.item.qsize()
     
     def qOut(self):
-        return self.item.get()
+        if not self.item.empty():
+            return self.item.get()
+        else:
+            return "Antrian Kosong" 
     
     def mainmenu(self): #untuk menampilkan menu utama dan meminta input dari pengguna.
         pilih = "y"
@@ -38,17 +41,25 @@ class myQueque:
             if (pilihan == "1"):
                 nama = str(input("Masukan Nama Siswa : "))
                 nis= str(input("Masukan NIS Siswa : "))
-                self.qAdd(nis,nama)
+                data=[nis,nama]
+                self.qAdd(data)
                 print(f"NIS {nis} Atas Nama {nama} Telah Masuk Antrian")
                 i = input ("")
 
+            # elif pilihan == "2":
+            #     keluar = self.qOut()
+            #     # if keluar != "Antrian Kosong":
+            #     #     print("Dengan NIS", keluar[0], "Atas Nama", keluar[1], "Telah Keluar dari Antrian")
+            #     # else:
+            #     #     print("Antrian Kosong")
+                # i = input("")
             elif(pilihan == "2"):
-                if not self.item.empty():
-                    keluar = self.item.get()
-                    print(f"Dengan NIS dan Nama {keluar} telah keluar dari antrian")
+                keluar = self.qOut()
+                if keluar != "Antrian Kosong":
+                    print("Dengan NIS",keluar[0],"Atas Nama", keluar[1]," Telah Keluar dari Antrian")
                 else:
                     print("Antrian Kosong")
-                i = input ("")
+                i = input("")
 
             elif(pilihan == "3"):
                 print(f"Terdapat {str(self.size())} Siswa Sedang Menunggu Antrian  ")
