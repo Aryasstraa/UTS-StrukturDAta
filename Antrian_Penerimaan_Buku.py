@@ -53,7 +53,10 @@ class myQueque:
                 i = input("")
 
             elif(pilihan == "3"):
-                print(f"Terdapat {str(self.size())} Siswa Sedang Menunggu Antrian  ")
+                if self.size():
+                    print(f"Terdapat {str(self.size())} Siswa Sedang Menunggu Antrian  ")
+                else:
+                    print("Tidak Ada Antrian")
                 i = input("")
 
             elif(pilihan == "4"):
