@@ -7,16 +7,14 @@ class myQueque:
         self.item = queue.Queue()
 
     def qAdd(self,item): #untuk menambahkan item ke dalam antrian.
-        self.item.put(item) # fungsi (nama,nis) didalam qAdd untuk menggabungkan 2 input menjadi 1 input pada saat menegcek antrian  
-
+        self.item.put(item)
     def isEmpty(self): # untuk memeriksa apakah antrian kosong atau tidak.
         return self.item.empty()
-
         
     def size(self): # untuk menghitung jumlah item dalam antrian.
         return self.item.qsize()
     
-    def qOut(self):
+    def qOut(self):#untuk mengeluarkan 1 data
         if not self.item.empty():
             return self.item.get()
         else:
@@ -46,17 +44,10 @@ class myQueque:
                 print(f"NIS {nis} Atas Nama {nama} Telah Masuk Antrian")
                 i = input ("")
 
-            # elif pilihan == "2":
-            #     keluar = self.qOut()
-            #     # if keluar != "Antrian Kosong":
-            #     #     print("Dengan NIS", keluar[0], "Atas Nama", keluar[1], "Telah Keluar dari Antrian")
-            #     # else:
-            #     #     print("Antrian Kosong")
-                # i = input("")
             elif(pilihan == "2"):
                 keluar = self.qOut()
                 if keluar != "Antrian Kosong":
-                    print("Dengan NIS",keluar[0],"Atas Nama", keluar[1]," Telah Keluar dari Antrian")
+                    print("Dengan NIS",keluar[0],"Atas Nama", keluar[1],"Telah Keluar dari Antrian")
                 else:
                     print("Antrian Kosong")
                 i = input("")
